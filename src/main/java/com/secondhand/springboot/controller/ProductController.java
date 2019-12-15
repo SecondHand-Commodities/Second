@@ -1,5 +1,6 @@
 package com.secondhand.springboot.controller;
 
+import com.secondhand.springboot.Utils.UuidUtil;
 import com.secondhand.springboot.bean.Products;
 import com.secondhand.springboot.mapper.ProductsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,18 @@ public class ProductController {
     @Autowired
     private ProductsMapper productsMapper;
 
-    public int upLoadProduct(String id){
-        return productsMapper.
+    /**
+     * 上传商品
+     * @param id
+     * @param name
+     * @param price
+     * @param photo
+     * @param state
+     * @param description
+     * @return
+     */
+    public int upLoadProduct(String id,String name,Double price,String photo,Integer state,String description){
+        return productsMapper.insertProduct(UuidUtil.proUuid(),id,name,price,photo,state,description);
     }
 
     /**

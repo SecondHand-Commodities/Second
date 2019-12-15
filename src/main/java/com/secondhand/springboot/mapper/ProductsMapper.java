@@ -24,7 +24,7 @@ public interface ProductsMapper {
     @Update("update products set pstate = #{state} where pid = #{id}")
     public int updateProductState(String pid,int state);
 
-    @Insert("insert into products values")
-    public int insertProduct(String pid,String id,String name,Double price,String photo,Integer state);
+    @Insert("insert into products values(#{pid},#{id},#{pname},#{pprice},#{pphoto},#{pstate},#{pdescription})")
+    public int insertProduct(String pid,String id,String name,Double price,String photo,Integer state,String description);
 
 }
