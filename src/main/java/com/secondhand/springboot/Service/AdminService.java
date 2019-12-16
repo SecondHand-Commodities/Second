@@ -15,7 +15,7 @@ public class AdminService {
 	
 	public Person information(User admin) {
 		System.out.println(admin.getUserName());
-		return adminMapper.information(admin);
+		return adminMapper.information(admin).get(0);
 		
 	}
 	

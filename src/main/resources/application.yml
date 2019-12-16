@@ -4,7 +4,7 @@ spring:
   datasource:
     username: sa
     password: 111111
-    url: jdbc:sqlserver://localhost:1433;databasename=SecondHand
+    url: jdbc:sqlserver://192.168.31.238:1433;databasename=SecondHand
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     type: com.alibaba.druid.pool.DruidDataSource
 
