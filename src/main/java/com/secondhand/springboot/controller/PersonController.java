@@ -7,6 +7,7 @@ import com.secondhand.springboot.mapper.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +33,13 @@ public class PersonController {
         return personMapper.insertPerson(person);
     }
 
+    /**
+     * @author yxn
+     * @param person
+     * @param request
+     * @return
+     */
+    @PostMapping("/changeInfo")
     public String changeInfo(Person person, HttpServletRequest request){
         personService.changeInfo(person,(String) request.getSession().getAttribute("username"));
         return "修改成功";
