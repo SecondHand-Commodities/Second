@@ -4,8 +4,6 @@ import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.User;
 import com.secondhand.springboot.mapper.PersonMapper;
 import com.secondhand.springboot.mapper.UserMapper;
-import com.secondhand.springboot.repository.PersonRepository;
-import com.secondhand.springboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -66,15 +66,6 @@
 		    <artifactId>spring-boot-starter-thymeleaf</artifactId>
 		  
 		</dependency>
-<<<<<<< HEAD
-		<!-- yxn 添加的  -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-=======
-
->>>>>>> c29d32606f6834ee6c4b9c4f3af546dad22ba3b8
 		<!-- yxn 添加的  -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

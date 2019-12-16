@@ -1,9 +1,6 @@
 package com.secondhand.springboot.bean;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 /**
  * @author rzw
  * @create 2019-12-13-16:38
