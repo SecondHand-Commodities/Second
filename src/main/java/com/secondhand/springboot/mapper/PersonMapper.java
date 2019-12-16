@@ -6,6 +6,7 @@ import com.secondhand.springboot.bean.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 /**
  * @author rzw
@@ -26,6 +27,9 @@ public interface PersonMapper {
     @Insert ("insert into user values (#{username},#{password}")
     public int insertUserOne(User user);
     
-    @Insert ("insert into person valuses (#{id},#{name},#{sex},#{tel},#{address},#{flag})")
+    @Insert ("insert into person values (#{id},#{name},#{sex},#{tel},#{address},#{flag})")
     public int insertPersonOne(Person person);
+
+    @Update("update person set name=#{name},sex=#{sex},tel=#{tel},address=#{address},flag=#{flag}")
+    public int updatePerson(Person person);
 }

@@ -22,7 +22,7 @@ public class UserController {
 			return "已登录，请勿重复登陆";
 		boolean result = userService.Login(user);
 		if(result){
-			request.getSession().setAttribute("username",user.getUserName());
+			request.getSession().setAttribute("user",user);
 			return "ok";
 		}else
 			return "用户名或密码错误";
