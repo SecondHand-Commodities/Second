@@ -1,5 +1,7 @@
 package com.secondhand.springboot.Service;
 
+import com.secondhand.springboot.mapper.PersonMapper;
+import com.secondhand.springboot.mapper.UserMapper;
 import com.secondhand.springboot.repository.PersonRepository;
 import com.secondhand.springboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +15,12 @@ import java.util.UUID;
 @Service
 public class UserService {
 	@Autowired
-	UserRepository repository;
+	UserMapper userMapper;
 	@Autowired
-	PersonRepository personRepository;
+	PersonMapper personMapper;
 
 	public boolean Regist(User account){
-		User accountByUsername = repository.findAccountByUsername(account.getUserName());
+		User accountByUsername = userMapper.findAccountByUsername(account.getUserName());
 		if (!Objects.isNull(accountByUsername))
 			return false;
 		else {
@@ -26,15 +28,15 @@ public class UserService {
 			p.setName(("user_"+ UUID.randomUUID().toString()).substring(0,10));
 			p.setSex(true);
 
-			personRepository.save(p);
+			personMapper.insertPerson(p);
 			account.setPerson(p);
-			repository.save(account);
+			userMapper.insert(account);
 			return true;
 		}
 	}
 
 	public boolean Login(User account){
-		User accountByUsernameAndPassword = repository.findAccountByUsernameAndPassword(account.getUserName(), account.getPassword());
+		User accountByUsernameAndPassword = userMapper.findUserByUsernameAndPassword(account.getUserName(), account.getPassword());
 		if(Objects.isNull(accountByUsernameAndPassword))
 			return false;
 		else

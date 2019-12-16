@@ -2,6 +2,8 @@ package com.secondhand.springboot.Service;
 
 import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.User;
+import com.secondhand.springboot.mapper.PersonMapper;
+import com.secondhand.springboot.mapper.UserMapper;
 import com.secondhand.springboot.repository.PersonRepository;
 import com.secondhand.springboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +22,12 @@ import java.util.Objects;
 @Service
 public class PersonService {
     @Autowired
-    PersonRepository repository;
+    PersonMapper personMapper;
 
     @Autowired
-    UserRepository accountRepository;
+    UserMapper userMapper;
     public boolean changeInfo(Person person, String username){
-        User accountByUsername = accountRepository.findAccountByUsername(username);
+        User accountByUsername = userMapper.findAccountByUsername(username);
         Person oldPerson=accountByUsername.getPerson();
         for (Field f:
                 Person.class.getDeclaredFields()) {
@@ -38,7 +40,7 @@ public class PersonService {
                 e.printStackTrace();
             }
         }
-        repository.save(person);
+        personMapper.updatePerson(person);
         return true;
     }
 }
