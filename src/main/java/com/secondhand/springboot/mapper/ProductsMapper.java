@@ -28,6 +28,6 @@ public interface ProductsMapper {
     @Insert("insert into products values(#{pid},#{perId.id},#{pName},#{pPrice},#{pPhoto},#{pState},#{pDescription},#{createtime})")
     public int insertProduct(Products products);
 
-    @Select("select * from products where ostate = #{state}")
+    @Select("select * from products where pstate = #{state}")
     public List<Products> getProductsByState(Integer state);
 }
