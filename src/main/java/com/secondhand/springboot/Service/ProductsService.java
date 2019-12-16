@@ -3,10 +3,12 @@ package com.secondhand.springboot.Service;
 import com.secondhand.springboot.Utils.UuidUtil;
 import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.Products;
+import com.secondhand.springboot.mapper.PersonMapper;
 import com.secondhand.springboot.mapper.ProductsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,14 +19,21 @@ import java.util.List;
 public class ProductsService {
     @Autowired
     private ProductsMapper productsMapper;
+    @Autowired
+    private PersonMapper personMapper;
 
     /**
      * 上传商品
      * @param product
      * @return
      */
-    public int upLoadProduct(Products product){
+    public int upLoadProduct(Products product, String perid){
         product.setPid(UuidUtil.proUuid());
+        product.setPerId(personMapper.getPersonById(perid));
+        product.setpState(0);
+        Date date = new Date();
+        product.setCreatetime(date);
+        System.out.println(product.getpDescription());
         return productsMapper.insertProduct(product);
     }
 

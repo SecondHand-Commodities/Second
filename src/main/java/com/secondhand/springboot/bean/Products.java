@@ -12,6 +12,9 @@ public class Products {
     private String pName;
     private Double pPrice;
     private String pPhoto;
+    private Integer pState;
+    private String pDescription;
+    private Date createtime;
 
     public void setPerId(Person perId) {
         this.perId = perId;
@@ -21,10 +24,6 @@ public class Products {
 
         return perId;
     }
-
-    private Integer pState;
-    private String pDescription;
-    private Date createtime;
 
     public String getPid() {
         return pid;

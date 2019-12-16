@@ -1,5 +1,6 @@
 package com.secondhand.springboot.bean;
 
+
 /**
  * @author rzw
  * @create 2019-12-13-16:38

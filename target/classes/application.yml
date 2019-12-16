@@ -28,11 +28,5 @@ spring:
 #mvc后缀
   mvc:
     view:
-      prefix: /templates/
-      suffix: .html
-#thymeleaf
-  thymeleaf:
-   prefix: classpath:/templatess/  #prefix：指定模板所在的目录
-   check-template-location: true 
-   cache: false
-   suffix: .html
+      prefix: /public/
+      suffix: .jsp
