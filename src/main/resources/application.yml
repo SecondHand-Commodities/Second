@@ -28,5 +28,9 @@ spring:
 #mvc后缀
   mvc:
     view:
-      prefix: /public/
-      suffix: .jsp
+      prefix: /templates/
+      suffix: .html
+#thymeleaf
+  thymeleaf:
+    cache: false
+    enabled: false
