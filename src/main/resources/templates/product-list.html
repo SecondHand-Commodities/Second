@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 
 <head>
 
@@ -58,40 +58,37 @@
     <!--====== PRELOADER  PART ENDS ======-->
 
     <!--====== SEARCH PART START ======-->
-
     <div class="search-box">
         <div class="search-header">
             <div class="container mt-60">
                 <div class="row">
                     <div class="col-6">
-                        <h5 class="search-title">查找</h5> <!-- search title -->
+                        <h5 class="search-title">查找</h5>
                     </div>
                     <div class="col-6">
                         <div class="search-close text-right">
                             <button class="search-close-btn">关闭 <span></span><span></span></button>
-                        </div> <!-- search close -->
+                        </div> 
                     </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- search header -->
+                </div> 
+            </div> 
+        </div> 
         <div class="search-body">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="search-form">   <!--搜索功能-->
+                        <div class="search-form">
                             <form action="#">
                                 <input type="text" placeholder="查找商品">
                                 <button><i class="flaticon-search"></i></button>
                             </form>
                         </div>
                     </div>
-                </div> <!-- row -->
-            </div> <!-- container -->
-        </div> <!-- search body -->
+                </div> 
+            </div>
+        </div> 
     </div>
-
     <!--====== SEARCH PART ENDS ======-->
-
 
     <!--====== HEADER  PART START ======-->
 
@@ -100,7 +97,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <nav class="navbar navbar-expand-lg">                
+                            <div class="navbar-icon d-none d-sm-block">
                                 <ul>
                                     <li><a class="search-open" href="#"><i class="pe-7s-search"></i></a></li>
 									<li><span class="r"><a href="#">个人信息</a></span></li>
@@ -115,6 +112,8 @@
 
     <!--====== HEADER  PART ENDS ======-->
 
+
+
     <!--====== PAGE TITLE  PART START ======-->
 
     <section class="page-title-area d-flex align-items-center bg_cover" style="background-image: url(assets/images/page-title-bg.jpg)">
@@ -122,10 +121,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="page-title-item text-center">
-                        <h3 class="title">商品详情</h3>
+                        <h3 class="title">产品列表</h3>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item active" aria-current="page">商品详情</li>
+                                <li class="breadcrumb-item active" aria-current="page">产品列表</li>
                             </ol>
                         </nav>
                     </div> <!-- page title item -->
@@ -133,49 +132,121 @@
             </div> <!-- row -->
         </div> <!-- row -->
         <div class="page-title-shape">
-            <img src="assets/images/banner-shape.png" alt="shape">
+            <img src="../static/assets/images/banner-shape.png" alt="shape">
         </div> <!-- page title shape -->
     </section>
 
     <!--====== PAGE TITLE  PART ENDS ======-->
 
-    <!--====== PRODUCT DETAILS PART START ======-->
+    <!--====== PRODUCT  PART START ======-->
 
-    <section class="product-details-area pt-30 pb-90">
+    <section class="product-area product-area-2">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-5">
-                    <div class="product-details-thumb mt-35">
-                        <img src="../static/assets/images/product-details-thumb-1.jpg" alt="product details"> <!-- 商品图片-->
+            <div class="row align-items-center pt-65 pb-20">
+                <div class="col-lg-3 col-md-4">
+                    <div class="product-grid-tab d-flex">
+                        <span>产品展示 </span>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-7">
-                    <div class="product-details-content mt-30">
-                        <div class="product-details-title">
-                            <h4 class="title">Grape</h4>
+            </div>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-md-4 col-sm-9">
+                            <div class="product-list-thumb mt-30">
+                                <img src="../static/assets/images/product-1.jpg" alt="product">
+                            </div>
                         </div>
-                        <div class="product-details-con">
-                            <span>$50.00</span>
-                            <p>商品介绍</p>
+                        <div class="col-lg-6 col-md-8 col-sm-9">
+                            <div class="product-list-content mt-30">
+                                <h5 class="title">Grape</h5>
+                                <span>$15.00</span>
+                                <p>商品介绍 </p>
+                                <a href="#">购买</a>
+                            </div>
                         </div>
-                        <div class="product-details-color d-flex">
-                            <span>卖家</span>
-                            <ul>
-								<p>卖家详情链接</p>
-                            </ul>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-md-4 col-sm-9">
+                            <div class="product-list-thumb mt-30">
+                                <img src="../static/assets/images/product-4.jpg" alt="product">
+                            </div>
                         </div>
-                        <div class="product-details-cart d-flex align-items-center">
-                            <div class="add-cart">
+                        <div class="col-lg-6 col-md-8 col-sm-9">
+                            <div class="product-list-content mt-30">
+                                <h5 class="title">Red Pepper</h5>
+                                <span>$45.00</span>
+                                <p>商品介绍 </p>
+                                <a href="#">购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-md-4 col-sm-9">
+                            <div class="product-list-thumb mt-30">
+                                <img src="../static/assets/images/product-3.jpg" alt="product">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-8 col-sm-9">
+                            <div class="product-list-content mt-30">
+                                <h5 class="title">Cauliflower</h5>
+                                <span>$45.00</span>
+                                <p>商品介绍 </p>
+                                <a href="#">购买</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-lg-3 col-md-4 col-sm-9">
+                            <div class="product-list-thumb mt-30">
+                                <img src="../static/assets/images/product-5.jpg" alt="product">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-8 col-sm-9">
+                            <div class="product-list-content mt-30">
+                                <h5 class="title">Apple</h5>
+                                <span>$45.00</span>
+                                <p>商品介绍 </p>
                                 <a href="#">购买</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> <!-- container -->
     </section>
 
-    <!--====== PRODUCT DETAILS PART ENDS ======-->
+    <!--====== PRODUCT  PART ENDS ======-->
+
+    <!--====== BLOG GRID PART START ======-->
+                                           <!--自动翻页怎么搞-->
+    <div class="blog-list-area pt-30 pb-90">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-12">
+                    <div class="blog-list-item">
+                        <div class="pagination-area d-flex justify-content-between mt-60 pt-40">
+                            <div class="pagination-item-1">
+                                <ul>
+                                    <li><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                </ul>
+                            </div>
+                            <div class="pagination-item-2">
+                                <ul>
+                                    <li><a href="#"><i class="ion ion-ios-arrow-back"></i></a></li>
+                                    <li><a href="#"><i class="ion ion-ios-arrow-forward"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--====== BLOG GRID PART ENDS ======-->
 
     <!--====== BACK TO TOP ======-->
     <div class="back-to-top">
@@ -184,11 +255,6 @@
         </a>
     </div>
     <!--====== BACK TO TOP ======-->
-
-
-
-
-
 
 
 

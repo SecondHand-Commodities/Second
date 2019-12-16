@@ -61,4 +61,13 @@ public class ProductsService {
     public int purchase(String pid){
         return  productsMapper.updateProductState(pid,2);
     }
+
+    /**
+     * 通过状态查找商品
+     * @param state
+     * @return
+     */
+    public List<Products> getProductsByState(Integer state){
+        return  productsMapper.getProductsByState(state);
+    }
 }

@@ -23,9 +23,11 @@ public interface ProductsMapper {
     public Products getProductById(String pid);
 
     @Update("update products set pstate = #{state} where pid = #{pid}")
-    public int updateProductState(String pid,int state);
+    public int updateProductState(String pid,Integer state);
 
     @Insert("insert into products values(#{product.pid},#{product.perId},#{product.pname},#{product.pprice},#{product.pphoto},#{product.pstate},#{product.pdescription})")
     public int insertProduct(Products product);
 
+    @Select("select * from products where ostate = #{state}")
+    public List<Products> getProductsByState(Integer state);
 }
