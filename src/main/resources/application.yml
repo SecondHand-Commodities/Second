@@ -28,5 +28,5 @@ spring:
 #mvc后缀
   mvc:
     view:
-      prefix: /WEB-INF/
+      prefix: /public/
       suffix: .jsp
