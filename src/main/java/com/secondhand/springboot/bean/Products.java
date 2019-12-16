@@ -8,10 +8,20 @@ import java.util.Date;
  */
 public class Products {
     private String pid;
-    private String id;
+    private Person perId;
     private String pName;
     private Double pPrice;
     private String pPhoto;
+
+    public void setPerId(Person perId) {
+        this.perId = perId;
+    }
+
+    public Person getPerId() {
+
+        return perId;
+    }
+
     private Integer pState;
     private String pDescription;
     private Date createtime;
@@ -20,9 +30,6 @@ public class Products {
         return pid;
     }
 
-    public String getId() {
-        return id;
-    }
 
     public String getpName() {
         return pName;
@@ -52,9 +59,6 @@ public class Products {
         this.pid = pid;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public void setpName(String pName) {
         this.pName = pName;

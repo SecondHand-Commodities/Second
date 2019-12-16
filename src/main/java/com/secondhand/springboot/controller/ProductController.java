@@ -1,6 +1,7 @@
 package com.secondhand.springboot.controller;
 
 import com.secondhand.springboot.Utils.UuidUtil;
+import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.Products;
 import com.secondhand.springboot.mapper.ProductsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class ProductController {
 
     /**
      * 上传商品
-     * @param id
+     * @param perId
      * @param name
      * @param price
      * @param photo
@@ -28,8 +29,8 @@ public class ProductController {
      * @param description
      * @return
      */
-    public int upLoadProduct(String id,String name,Double price,String photo,Integer state,String description){
-        return productsMapper.insertProduct(UuidUtil.proUuid(),id,name,price,photo,state,description);
+    public int upLoadProduct(Person perId, String name, Double price, String photo, Integer state, String description){
+        return productsMapper.insertProduct(UuidUtil.proUuid(),perId,name,price,photo,state,description);
     }
 
     /**

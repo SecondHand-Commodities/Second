@@ -8,21 +8,29 @@ import java.util.Date;
  */
 public class Comment {
     private String cid;
-    private String aId;
-    private String bId;
+    private Person perAId;
+    private Person perBId;
     private String comment;
     private Date cDate;
 
+    public void setPerAId(Person perAId) {
+        this.perAId = perAId;
+    }
+
+    public void setPerBId(Person perBId) {
+        this.perBId = perBId;
+    }
+
+    public Person getPerAId() {
+        return perAId;
+    }
+
+    public Person getPerBId() {
+        return perBId;
+    }
+
     public String getCid() {
         return cid;
-    }
-
-    public String getaId() {
-        return aId;
-    }
-
-    public String getbId() {
-        return bId;
     }
 
     public String getComment() {
@@ -37,13 +45,6 @@ public class Comment {
         this.cid = cid;
     }
 
-    public void setaId(String aId) {
-        this.aId = aId;
-    }
-
-    public void setbId(String bId) {
-        this.bId = bId;
-    }
 
     public void setComment(String comment) {
         this.comment = comment;
