@@ -20,8 +20,8 @@ public interface PersonMapper {
     public int insertPerson(Person person);
     
     
-    @Select ("select count(*) from user where username=#{usename} and password=#{password}")
-    public int checkUser(String usename,String password);
+    @Select ("select count(*) from user where username=#{usename}")
+    public int checkUser(String usename);
     
     @Insert ("insert into user values (#{username},#{password}")
     public int insertUserOne(User user);
