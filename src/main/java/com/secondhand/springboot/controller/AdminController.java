@@ -1,19 +1,31 @@
 package com.secondhand.springboot.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.secondhand.springboot.Service.AdminService;
+import com.secondhand.springboot.Service.ProductsService;
 import com.secondhand.springboot.bean.Person;
+import com.secondhand.springboot.bean.Products;
 import com.secondhand.springboot.bean.User;
 
 @Controller
 public class AdminController {
 	@Autowired
 	AdminService adminService;
+	@Autowired
+	ProductsService productsService;
+	
+	
+	
 	@RequestMapping("/admin")
 //	public String adminCheck(User admin,Model model) {
 //		
@@ -22,13 +34,20 @@ public class AdminController {
 //		return "index";
 //	}
 	public String adminCheck(Model model) {
-	User user =new User();
-	user.setUserName("admin");
-	user.setPassword("admin");
-	System.out.println(user.getUserName());
-	Person person =adminService.information(user);		
-	model.addAttribute(person);
-	return "index";
-}
+		User user =new User();
+		user.setUserName("admin");
+		user.setPassword("admin");
+		Person person =adminService.information(user);		
+		model.addAttribute("admin", person);
+		return "index";
+	}
+	
+	@RequestMapping("/shenghe")
+	public String checkProduct(@RequestParam(value="state",defaultValue="0")String state) {		
+		List<Products> personList =new ArrayList<Products>();
+		personList=productsService.getProductsByState(Integer.parseInt(state));
+		return "index";		
+	}
+	
 	
 }
