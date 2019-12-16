@@ -27,5 +27,5 @@ public interface PersonMapper {
     public int insertUserOne(User user);
     
     @Insert ("insert into person valuses (#{id},#{name},#{sex},#{tel},#{address},#{flag})")
-    public int insertUserOne(Person person);
+    public int insertPersonOne(Person person);
 }
