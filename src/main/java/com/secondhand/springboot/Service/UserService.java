@@ -38,4 +38,10 @@ public class UserService {
 		else
 			return true;
 	}
+	
+	public Person selectByNameAndPassword(User account){
+		User accountByUsernameAndPassword = userMapper.findUserByUsernameAndPassword(account.getUserName(), account.getPassword());
+		return accountByUsernameAndPassword.getPerson();
+	}
 }
+
