@@ -39,9 +39,8 @@ public class UserService {
 			return true;
 	}
 	
-	public Person selectByNameAndPassword(User account){
-		User accountByUsernameAndPassword = userMapper.findUserByUsernameAndPassword(account.getUserName(), account.getPassword());
-		return accountByUsernameAndPassword.getPerson();
+	public User selectByNameAndPassword(User account){		 
+		return userMapper.findUserByUsernameAndPassword(account.getUserName(), account.getPassword());
 	}
 }
 

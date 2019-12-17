@@ -21,13 +21,25 @@ public class UserController {
 	@RequestMapping("login_check")
 	public void Login(User user , HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+//		if(!Objects.isNull(request.getSession().getAttribute("username")))
+//			System.out.println("已登录，请勿重复登陆"); 
+//		boolean result = userService.Login(user);
+//		Person person =userService.selectByNameAndPassword(user);
+//		if(result){
+//			request.getSession().setAttribute("user",user);	
+//			if (person.getFlag()==1)
+//				response.sendRedirect("admin");
+//			else response.sendRedirect("getAllProducts");
+//		} else			
+//			response.sendRedirect("login"); 
+		
 		if(!Objects.isNull(request.getSession().getAttribute("username")))
 			System.out.println("已登录，请勿重复登陆"); 
 		boolean result = userService.Login(user);
-		Person person =userService.selectByNameAndPassword(user);
-		if(result){
-			request.getSession().setAttribute("user",user);	
-			if (person.getFlag()==1)
+		user =userService.selectByNameAndPassword(user);
+		request.getSession().setAttribute("user",user);	
+		if(result){			
+			if (user.getPerson().getFlag()==1)
 				response.sendRedirect("admin");
 			else response.sendRedirect("getAllProducts");
 		} else			

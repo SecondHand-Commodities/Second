@@ -1,6 +1,8 @@
 package com.secondhand.springboot.Inteceptor;
 
 import com.secondhand.springboot.bean.User;
+
+import org.springframework.lang.Nullable;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,9 +19,15 @@ import javax.servlet.http.HttpServletResponse;
 public class LimitInteceptor implements HandlerInterceptor {
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        User user = (User) request.getSession().getAttribute("user");
-        if(user.getPerson().getFlag()==1){
-            response.sendRedirect("/admin");
-        }
+       
+    }@Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
+    		throws Exception {
+    	 User user = (User) request.getSession().getAttribute("user");
+         if(user.getPerson().getFlag()==1){
+             response.sendRedirect("admin");
+         }
+    	HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
     }
+    
 }
