@@ -2,12 +2,7 @@ package com.secondhand.springboot.mapper;
 
 import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.User;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.One;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 @Mapper
 public interface UserMapper {
@@ -24,6 +19,6 @@ public interface UserMapper {
         @Result(column = "userName",property = "userName"),
         @Result(column = "password",property = "password")
 })
-    public User findUserByUsernameAndPassword(String username,String password);
+    public User findUserByUsernameAndPassword(@Param("username") String username,@Param("password") String password);
     
 }

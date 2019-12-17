@@ -109,4 +109,14 @@ public class ProductsService {
     public List<Products> getProductsByState(Integer state){
         return  productsMapper.getProductsByState(state);
     }
+
+    /**
+     * 模糊查询
+     * @param keyWord
+     * @return
+     */
+    public List<Products> getProductsByLike(String keyWord){
+        keyWord = "%" + keyWord + "%";
+        return productsMapper.getProductsByLike(keyWord);
+    }
 }

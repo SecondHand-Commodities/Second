@@ -63,4 +63,11 @@ public class ProductController {
         model.addAttribute("product",product);
         return "product-details";
     }
+
+    @RequestMapping("getProductsByLike")
+    public String getProductsByLike(@RequestParam("keyWord") String keyWord,Model model){
+        List<Products> products = productsService.getProductsByLike(keyWord);
+        model.addAttribute("products",products);
+        return "product-list";
+    }
 }

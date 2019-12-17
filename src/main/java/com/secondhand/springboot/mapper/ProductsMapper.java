@@ -37,4 +37,7 @@ public interface ProductsMapper {
 
     @Select("select * from products where pstate = #{state}")
     public List<Products> getProductsByState(Integer state);
+
+    @Select("select * from products where pname like #{keyWord} and pstate = 1")
+    public List<Products> getProductsByLike(String keyWord);
 }
