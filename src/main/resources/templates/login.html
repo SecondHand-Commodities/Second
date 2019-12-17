@@ -1,10 +1,5 @@
-<!--Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
-<html lang="zxx">
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<title>Latest Login Form Responsive Widget Template :: w3layouts</title>
@@ -21,19 +16,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			window.scrollTo(0, 1);
 		}
 	</script>
-	<!-- Meta tag Keywords -->
-
-	<!-- css files -->
-	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-	<!-- Style-CSS -->
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<!-- Font-Awesome-Icons-CSS -->
-	<!-- //css files -->
-
-	<!-- web-fonts -->
+	<link rel="stylesheet" href="../static/css/styleLogin.css" type="text/css" media="all" />
+	<link href="../static/css/font-awesome.min.css" rel="stylesheet">
 	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
 	 rel="stylesheet">
-	<!-- //web-fonts -->
+
 </head>
 
 <body>
@@ -45,12 +32,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="sub-main-w3">
 			<div class="bg-content-w3pvt">
 				<div class="top-content-style">
-					<img src="images/user.jpg" alt="" />
+					<img src="static/images/user.jpg" alt="" />
 				</div>
-				<form action="#" method="post">
+				<form action="login_check" method="post">
 					<p class="legend">在此登录<span class="fa fa-hand-o-down"></span></p>
 					<div class="input">
-						<input type="email" placeholder="Name" name="name" required />
+					 	<input type="text" placeholder="Name" name="userName" required />						
 						<span class="fa fa-envelope"></span>
 					</div>
 					<div class="input">
@@ -64,8 +51,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<a href="#" class="bottom-text-w3ls">没有账号？点击注册</a>
 			</div>
 		</div>
-		<!-- //content -->
-		<!-- copyright -->
+
 		<div class="copyright">
 			<h2>&copy; 2019 二手交易平台
 			</h2>
