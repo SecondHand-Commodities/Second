@@ -10,21 +10,34 @@ import java.util.Date;
 public class Order {
 
     private String oid;
-    private String pid;
-    private String id;
+    private Products pid;
+    private Person id;
     private Date oDate;
     private Integer oState;
 
-    public String getOid() {
-        return oid;
+    public void setPid(Products pid) {
+        this.pid = pid;
     }
 
-    public String getPid() {
+    public Products getPid() {
+
         return pid;
     }
 
-    public String getId() {
+    public Person getId() {
         return id;
+    }
+
+    public void setId(Person id) {
+        this.id = id;
+    }
+
+    public void setoState(Integer oState) {
+        this.oState = oState;
+    }
+
+    public String getOid() {
+        return oid;
     }
 
     public Date getoDate() {
@@ -39,19 +52,7 @@ public class Order {
         this.oid = oid;
     }
 
-    public void setPid(String pid) {
-        this.pid = pid;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public void setoDate(Date oDate) {
         this.oDate = oDate;
-    }
-
-    public void setoState(int oState) {
-        this.oState = oState;
     }
 }

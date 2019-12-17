@@ -30,7 +30,7 @@ public interface ProductsMapper {
     public Products getProductById(String pid);
 
     @Update("update products set pstate = #{state} where pid = #{pid}")
-    public int updateProductState(String pid,Integer state);
+    public int updateProductState(@Param("pid") String pid,@Param("state") Integer state);
 
     @Insert("insert into products values(#{pid},#{perId.id},#{pName},#{pPrice},#{pPhoto},#{pState},#{pDescription},#{createtime})")
     public int insertProduct(Products products);

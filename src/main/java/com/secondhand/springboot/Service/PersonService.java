@@ -41,4 +41,8 @@ public class PersonService {
         personMapper.updatePerson(person);
         return true;
     }
+
+    public Person getPersonById(String id){
+        return personMapper.getPersonById(id);
+    }
 }

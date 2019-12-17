@@ -2,7 +2,6 @@ package com.secondhand.springboot.controller;
 
 import com.secondhand.springboot.Service.PersonService;
 import com.secondhand.springboot.Service.ProductsService;
-import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.Products;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;

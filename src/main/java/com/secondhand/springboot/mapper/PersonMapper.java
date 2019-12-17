@@ -24,7 +24,7 @@ public interface PersonMapper {
     @Select ("select count(*) from user where username=#{usename}")
     public int checkUser(String usename);
     
-    @Insert ("insert into user values (#{username},#{password}")
+    @Insert ("insert into user values (#{username},#{password})")
     public int insertUserOne(User user);
     
     @Insert ("insert into person values (#{id},#{name},#{sex},#{tel},#{address},#{flag})")
