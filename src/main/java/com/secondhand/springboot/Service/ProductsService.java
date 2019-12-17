@@ -50,7 +50,7 @@ public class ProductsService {
             return "上传失败";
         }
         String fileName = file.getOriginalFilename();
-        String filePath = "classPath/static/images/";
+        String filePath = "D:/software/src/main/resources/static/images/";
         File dest = new File(filePath + fileName);
         try {
             file.transferTo(dest);

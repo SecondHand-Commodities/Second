@@ -10,10 +10,10 @@
 </head>
 <body>
     <div>
-        <form method="post" action="/addProduct">
+        <form method="post" action="/addProduct" enctype="multipart/form-data">
             产品名字<input type="text" name="pName"/><br>
             产品价格<input type="text" name="pPrice"/><br>
-            产品图片<input type="file" name="pPhoto"/><br>
+            产品图片<input type="file" name="file"/><br>
             产品描述<input type="text" name="pDescription"/><br>
             <input type="submit">
         </form>
