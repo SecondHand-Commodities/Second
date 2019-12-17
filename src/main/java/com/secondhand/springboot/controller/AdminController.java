@@ -43,9 +43,16 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/shenghe")
-	public String checkProduct(@RequestParam(value="state",defaultValue="0")String state) {		
-		List<Products> personList =new ArrayList<Products>();
-		personList=productsService.getProductsByState(Integer.parseInt(state));
+	public String checkProduct(@RequestParam(value="state",defaultValue="0")String state,Model model) {		
+		User user =new User();
+		user.setUserName("admin");
+		user.setPassword("admin");
+		Person person =adminService.information(user);		
+		model.addAttribute("admin", person);
+		List<Products> productsList =new ArrayList<Products>();
+		productsList=productsService.getProductsByState(Integer.parseInt(state));
+		model.addAttribute(productsList);
+		System.out.println(productsList.get(0).getpName());
 		return "index";		
 	}
 	

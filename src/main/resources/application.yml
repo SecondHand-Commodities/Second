@@ -28,5 +28,10 @@ spring:
 #mvc后缀
   mvc:
     view:
-      prefix: /public/
-      suffix: .jsp
+      prefix: /templates/
+      suffix: .html
+#thymeleaf
+  thymeleaf:
+    cache: false # 开发时关闭缓存,不然没法看到实时页面
+    mode: HTML # 用非严格的 HTML
+    encoding: UTF-8

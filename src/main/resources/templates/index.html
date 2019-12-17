@@ -43,7 +43,7 @@
 			<div class="left">
 				<ul>
 					<li>
-						<a href="#" class="active">
+						<a href="shenghe?state=0" class="active">
 							<i class="icon iconfont icon-lingdang"></i>
 							待审核
 						</a>
@@ -91,13 +91,18 @@
 									</thead>
 									
 									<tbody>
-										 <tr th:each="product,userStat : ${list}">  
-							                <th th:text="${product.Pphoto}">状态变量：index</th>  
-							                <th th:text="${product.Pname}">状态变量：count</th>  
-							                <th th:text="${product.Pprice}">状态变量：size</th> 
-											<th th:text="${product.Pdescription}">状态变量：count</th>  
-							                <th th:text="${product.Pstate}">状态变量：size</th>    
-							             </tr>  
+										 <tr th:each="product,iterStat : ${productsList}">  
+										  	<th >#</th>  
+							                <th th:text="${product.pPhoto}"></th>  
+							                <th th:text="${product.pName}"></th>  
+							                <th th:text="${product.pPrice}"></th> 
+											<th th:text="${product.pDescription}"></th>  
+							                <th th:switch = "${product.pState}">
+												    <span th:case = "0">待审核</span>
+												    <span th:case = "1">已审核</span>
+												    <span th:case = "2">审核未通过</span>						                	
+							                </th>    
+							             </tr>
 									</tbody>
 								</table>
 							</div>	
