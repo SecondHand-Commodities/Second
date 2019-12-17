@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -13,34 +13,34 @@
     <title>HaFood</title>
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="../static/assets/images/favicon.ico" type="image/png">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
 
     <!--====== Bootstrap css ======-->
-    <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 
     <!--====== Pe Icon 7 Stroke css ======-->
-    <link rel="stylesheet" href="../static/assets/css/Pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="../assets/css/Pe-icon-7-stroke.css">
 
     <!--====== Ion Icons css ======-->
-    <link rel="stylesheet" href="../static/assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/ionicons.min.css">
 
     <!--====== Magnific Popup css ======-->
-    <link rel="stylesheet" href="../static/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
 
     <!--====== Slick css ======-->
-    <link rel="stylesheet" href="../static/assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
 
     <!--====== Animate css ======-->
-    <link rel="stylesheet" href="../static/assets/css/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
 
     <!--====== Nice Select css ======-->
-    <link rel="stylesheet" href="../static/assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
 
     <!--====== Default css ======-->
-    <link rel="stylesheet" href="../static/assets/css/default.css">
+    <link rel="stylesheet" href="../assets/css/default.css">
 
     <!--====== Style css ======-->
-    <link rel="stylesheet" href="../static/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
 
 </head>
@@ -151,63 +151,18 @@
             </div>
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center" th:each="product,item:${products}">
                         <div class="col-lg-3 col-md-4 col-sm-9">
                             <div class="product-list-thumb mt-30">
-                                <img src="../static/assets/images/product-1.jpg" alt="product">
+                                <img th:src="${product.pPhoto}" alt="product">
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-8 col-sm-9">
                             <div class="product-list-content mt-30">
-                                <h5 class="title">Grape</h5>
-                                <span>$15.00</span>
-                                <p>商品介绍 </p>
-                                <a href="#">购买</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-lg-3 col-md-4 col-sm-9">
-                            <div class="product-list-thumb mt-30">
-                                <img src="../static/assets/images/product-4.jpg" alt="product">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-8 col-sm-9">
-                            <div class="product-list-content mt-30">
-                                <h5 class="title">Red Pepper</h5>
-                                <span>$45.00</span>
-                                <p>商品介绍 </p>
-                                <a href="#">购买</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-lg-3 col-md-4 col-sm-9">
-                            <div class="product-list-thumb mt-30">
-                                <img src="../static/assets/images/product-3.jpg" alt="product">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-8 col-sm-9">
-                            <div class="product-list-content mt-30">
-                                <h5 class="title">Cauliflower</h5>
-                                <span>$45.00</span>
-                                <p>商品介绍 </p>
-                                <a href="#">购买</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row justify-content-center">
-                        <div class="col-lg-3 col-md-4 col-sm-9">
-                            <div class="product-list-thumb mt-30">
-                                <img src="../static/assets/images/product-5.jpg" alt="product">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-8 col-sm-9">
-                            <div class="product-list-content mt-30">
-                                <h5 class="title">Apple</h5>
-                                <span>$45.00</span>
-                                <p>商品介绍 </p>
-                                <a href="#">购买</a>
+                                <h5 class="title" th:text="${product.pName}"></h5>
+                                <span th:text="${product.pPrice}"></span>
+                                <p th:text="${product.pDescription}"></p>
+                                <a th:href="@{/getProduct/}+${product.pid}">查看</a>
                             </div>
                         </div>
                     </div>
@@ -259,33 +214,33 @@
 
 
     <!--====== jquery js ======-->
-    <script src="../static/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="../static/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 
     <!--====== Bootstrap js ======-->
-    <script src="../static/assets/js/bootstrap.min.js"></script>
-    <script src="../static/assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
 
     <!--====== Slick js ======-->
-    <script src="../static/assets/js/slick.min.js"></script>
+    <script src="../assets/js/slick.min.js"></script>
 
     <!--====== Isotope js ======-->
-    <script src="../static/assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
 
     <!--====== Images Loaded js ======-->
-    <script src="../static/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
 
     <!--====== Magnific Popup js ======-->
-    <script src="../static/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="../assets/js/jquery.magnific-popup.min.js"></script>
 
     <!--====== Nice Select js ======-->
-    <script src="../static/assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
 
     <!--====== Ajax Contact js ======-->
-    <script src="../static/assets/js/ajax-contact.js"></script>
+    <script src="../assets/js/ajax-contact.js"></script>
 
     <!--====== Main js ======-->
-    <script src="../static/assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 
 </body>
 

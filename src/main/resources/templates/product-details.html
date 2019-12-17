@@ -13,34 +13,34 @@
     <title>HaFood</title>
 
     <!--====== Favicon Icon ======-->
-    <link rel="shortcut icon" href="../static/assets/images/favicon.ico" type="image/png">
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
 
     <!--====== Bootstrap css ======-->
-    <link rel="stylesheet" href="../static/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 
     <!--====== Pe Icon 7 Stroke css ======-->
-    <link rel="stylesheet" href="../static/assets/css/Pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="../assets/css/Pe-icon-7-stroke.css">
 
     <!--====== Ion Icons css ======-->
-    <link rel="stylesheet" href="../static/assets/css/ionicons.min.css">
+    <link rel="stylesheet" href="../assets/css/ionicons.min.css">
 
     <!--====== Magnific Popup css ======-->
-    <link rel="stylesheet" href="../static/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
 
     <!--====== Slick css ======-->
-    <link rel="stylesheet" href="../static/assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
 
     <!--====== Animate css ======-->
-    <link rel="stylesheet" href="../static/assets/css/animate.min.css">
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
 
     <!--====== Nice Select css ======-->
-    <link rel="stylesheet" href="../static/assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
 
     <!--====== Default css ======-->
-    <link rel="stylesheet" href="../static/assets/css/default.css">
+    <link rel="stylesheet" href="../assets/css/default.css">
 
     <!--====== Style css ======-->
-    <link rel="stylesheet" href="../static/assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
 
 </head>
@@ -133,7 +133,7 @@
             </div> <!-- row -->
         </div> <!-- row -->
         <div class="page-title-shape">
-            <img src="assets/images/banner-shape.png" alt="shape">
+            <img src="../assets/images/banner-shape.png" alt="shape">
         </div> <!-- page title shape -->
     </section>
 
@@ -146,20 +146,20 @@
             <div class="row">
                 <div class="col-lg-6 col-md-5">
                     <div class="product-details-thumb mt-35">
-                        <img src="../static/assets/images/product-details-thumb-1.jpg" alt="product details"> <!-- 商品图片-->
+                        <img th:src="${product.pPhoto}" alt="product details"> <!-- 商品图片-->
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-7">
                     <div class="product-details-content mt-30">
                         <div class="product-details-title">
-                            <h4 class="title">Grape</h4>
+                            <h4 class="title" th:text="${product.pName}"></h4>
                         </div>
                         <div class="product-details-con">
-                            <span>$50.00</span>
-                            <p>商品介绍</p>
+                            <span th:text="￥+${product.pPrice}"></span>
+                            <p th:text="${product.pDescription}"></p>
                         </div>
                         <div class="product-details-color d-flex">
-                            <span>卖家</span>
+                            <span th:text="${product.perId.name}"></span>
                             <ul>
 								<p>卖家详情链接</p>
                             </ul>
@@ -193,33 +193,33 @@
 
 
     <!--====== jquery js ======-->
-    <script src="../static/assets/js/vendor/modernizr-3.6.0.min.js"></script>
-    <script src="../static/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 
     <!--====== Bootstrap js ======-->
-    <script src="../static/assets/js/bootstrap.min.js"></script>
-    <script src="../static/assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
 
     <!--====== Slick js ======-->
-    <script src="../static/assets/js/slick.min.js"></script>
+    <script src="../assets/js/slick.min.js"></script>
 
     <!--====== Isotope js ======-->
-    <script src="../static/assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
 
     <!--====== Images Loaded js ======-->
-    <script src="../static/assets/js/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/js/imagesloaded.pkgd.min.js"></script>
 
     <!--====== Magnific Popup js ======-->
-    <script src="../static/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="../assets/js/jquery.magnific-popup.min.js"></script>
 
     <!--====== Nice Select js ======-->
-    <script src="../static/assets/js/jquery.nice-select.min.js"></script>
+    <script src="../assets/js/jquery.nice-select.min.js"></script>
 
     <!--====== Ajax Contact js ======-->
-    <script src="../static/assets/js/ajax-contact.js"></script>
+    <script src="../assets/js/ajax-contact.js"></script>
 
     <!--====== Main js ======-->
-    <script src="../static/assets/js/main.js"></script>
+    <script src="../assets/js/main.js"></script>
 
 </body>
 

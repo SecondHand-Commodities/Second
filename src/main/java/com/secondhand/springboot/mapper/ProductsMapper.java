@@ -2,10 +2,7 @@ package com.secondhand.springboot.mapper;
 
 import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.Products;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -16,10 +13,20 @@ import java.util.List;
 @Mapper
 public interface ProductsMapper {
 
-    @Select("select * from products where ostate = 1")
+    @Select("select * from products where pstate = 1")
     public List<Products> getAllProducts();
 
     @Select("select * from products where pid = #{pid}")
+    @Results({
+            @Result(id = true,column = "Pid",property = "pid"),
+            @Result(column = "perid",property = "perId",one=@One(select = "com.secondhand.springboot.mapper.PersonMapper.getPersonById")),
+            @Result(column = "Pname",property = "pName"),
+            @Result(column = "Pprice",property = "pPrice"),
+            @Result(column = "Pphoto",property = "pPhoto"),
+            @Result(column = "Pstate",property = "pState"),
+            @Result(column = "Pdescription",property = "pDescription"),
+            @Result(column = "createtime",property = "createtime")
+    })
     public Products getProductById(String pid);
 
     @Update("update products set pstate = #{state} where pid = #{pid}")
