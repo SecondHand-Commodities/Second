@@ -1,17 +1,14 @@
 package com.secondhand.springboot.controller;
 
 import com.secondhand.springboot.Service.ProductsService;
-import com.secondhand.springboot.Utils.UuidUtil;
-import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.Products;
-import com.secondhand.springboot.mapper.ProductsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * @author rzw
@@ -25,10 +22,11 @@ public class ProductController {
     private ProductsService productsService;
 
     @RequestMapping("addProduct")
-    public String addProduct(Products products, HttpSession session){
+    public String addProduct(@RequestParam("file") MultipartFile file, Products products, HttpSession session){
+        String filePath = productsService.upLoadPhoto(file);
 //        String perid = (String) session.getAttribute("user");
         String perid = "user123456789098";
-        productsService.upLoadProduct(products,perid);
+        productsService.upLoadProduct(products,perid,filePath);
         return "success";
     }
     @RequestMapping("test")

@@ -1,13 +1,17 @@
 package com.secondhand.springboot.Service;
 
 import com.secondhand.springboot.Utils.UuidUtil;
-import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.Products;
 import com.secondhand.springboot.mapper.PersonMapper;
 import com.secondhand.springboot.mapper.ProductsMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +21,8 @@ import java.util.List;
  */
 @Service
 public class ProductsService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductsService.class);
     @Autowired
     private ProductsMapper productsMapper;
     @Autowired
@@ -27,14 +33,33 @@ public class ProductsService {
      * @param product
      * @return
      */
-    public int upLoadProduct(Products product, String perid){
+    public int upLoadProduct(Products product, String perid,String filePath){
         product.setPid(UuidUtil.proUuid());
         product.setPerId(personMapper.getPersonById(perid));
+        product.setpPhoto(filePath);
         product.setpState(0);
         Date date = new Date();
         product.setCreatetime(date);
-        System.out.println(product.getpDescription());
+        LOGGER.info("封装products对象成功");
         return productsMapper.insertProduct(product);
+    }
+
+    public String upLoadPhoto(MultipartFile file) {
+        if (file.isEmpty()){
+            LOGGER.info("上传文件为空，文件上传失败");
+            return "上传失败";
+        }
+        String fileName = file.getOriginalFilename();
+        String filePath = "classPath/static/images/";
+        File dest = new File(filePath + fileName);
+        try {
+            file.transferTo(dest);
+            LOGGER.info("文件上传成功");
+            return dest.getPath();
+        }catch (IOException e){
+            LOGGER.error(e.toString(),e);
+        }
+        return "上传失败";
     }
 
     /**
