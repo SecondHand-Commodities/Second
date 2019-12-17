@@ -65,10 +65,15 @@ public class ProductsService {
     /**
      * 管理员审核商品
      * @param pid
+     * @param state
      * @return
      */
-    public int checkProduct(String pid){
-        return productsMapper.updateProductState(pid,1);
+    public int checkProduct(String pid,Integer state){
+        int result = productsMapper.updateProductState(pid,state);
+        if (result == 1)
+            LOGGER.info("审核成功");
+        else LOGGER.error("审核失败");
+        return result;
     }
     /**
      * 展示商品列表功能
@@ -93,7 +98,7 @@ public class ProductsService {
      * @return
      */
     public int purchase(String pid){
-        return  productsMapper.updateProductState(pid,2);
+        return  productsMapper.updateProductState(pid,3);
     }
 
     /**
