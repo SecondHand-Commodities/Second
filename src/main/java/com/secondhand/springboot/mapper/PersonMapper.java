@@ -30,6 +30,6 @@ public interface PersonMapper {
     @Insert ("insert into person values (#{id},#{name},#{sex},#{tel},#{address},#{flag})")
     public int insertPersonOne(Person person);
 
-    @Update("update person set name=#{name},sex=#{sex},tel=#{tel},address=#{address},flag=#{flag}")
+    @Update("update person set name=#{name},sex=#{sex},tel=#{tel},address=#{address},flag=#{flag} where id =#{id}")
     public int updatePerson(Person person);
 }

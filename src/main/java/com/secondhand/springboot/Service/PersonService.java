@@ -45,4 +45,8 @@ public class PersonService {
     public Person getPersonById(String id){
         return personMapper.getPersonById(id);
     }
+
+	public boolean updatePerson(Person person) {
+		return personMapper.updatePerson(person)>0?true:false;
+	}
 }
