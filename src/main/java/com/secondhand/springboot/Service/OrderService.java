@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author rzw
@@ -50,5 +51,17 @@ public class OrderService {
         }
 
         return 1;
+    }
+    
+    public List<Products> selectMyPurchaseProduct(String id) {
+    	return orderMapper.selectMyPurchaseProduct(id);  	
+    }
+    
+    public List<Products> selectMySaleProductAndSaled(String id) {
+    	return orderMapper.selectMySaleProductAndSaled(id);  	
+    }
+    
+    public List<Products> selectMySaleProductAndUnSaled(String id) {
+    	return orderMapper.selectMySaleProductAndUnSaled(id);  	
     }
 }

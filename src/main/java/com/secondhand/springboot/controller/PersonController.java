@@ -1,11 +1,15 @@
 package com.secondhand.springboot.controller;
 
+import com.secondhand.springboot.Service.OrderService;
 import com.secondhand.springboot.Service.PersonService;
 import com.secondhand.springboot.Service.UserService;
 import com.secondhand.springboot.bean.Person;
+import com.secondhand.springboot.bean.Products;
 import com.secondhand.springboot.bean.User;
 import com.secondhand.springboot.mapper.PersonMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.xml.transform.Source;
 
@@ -21,7 +29,8 @@ import javax.xml.transform.Source;
  * @author rzw
  * @create 2019-12-13-17:10
  */
-@RestController
+
+@Controller
 public class PersonController {
     @Autowired
     PersonService personService;
@@ -29,6 +38,8 @@ public class PersonController {
     PersonMapper personMapper;
     @Autowired
     UserService userService;
+    @Autowired
+    OrderService orderService;
 
     @GetMapping("/per/{id}")
     public Person getPerson(@PathVariable("id") String id){
@@ -75,4 +86,32 @@ public class PersonController {
     	else return "网络原因注册失败";
     }
     
+	
+    @RequestMapping("myProduct")
+    public String myProduct(HttpServletRequest request,@RequestParam(value="state")String state,Model model){
+    	init(model, request);
+    	User user =(User) request.getSession().getAttribute("user");
+		List<Products> productsList =new ArrayList<Products>();
+    	if (state.equals("0"))
+    		productsList=orderService.selectMyPurchaseProduct(user.getPerson().getId());
+    	else if(state.equals("1"))
+    		productsList=orderService.selectMySaleProductAndSaled(user.getPerson().getId());
+    	else 
+    		productsList=orderService.selectMySaleProductAndUnSaled(user.getPerson().getId());    	
+    	model.addAttribute(productsList);
+    	return "pLnf";
+    }    
+    
+    @RequestMapping("personInformation")
+    public String personInformation(Model model,HttpServletRequest request) {
+    	init(model, request);   	
+    	return "person_information";
+    }
+    
+	public void init(Model model,HttpServletRequest request) {
+		User user =(User) request.getSession().getAttribute("user");
+		System.out.println(user.getPerson().getName());
+		model.addAttribute("admin", user.getPerson());
+	}
+	
 }
