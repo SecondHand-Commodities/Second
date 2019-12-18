@@ -55,7 +55,7 @@ public class ProductsService {
         try {
             file.transferTo(dest);
             LOGGER.info("文件上传成功");
-            return dest.getPath();
+            return "../images/" + fileName;
         }catch (IOException e){
             LOGGER.error(e.toString(),e);
         }

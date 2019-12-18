@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 
     <!--====== Required meta tags ======-->
@@ -7,16 +8,159 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--====== Title ======-->
+    <title>HaFood</title>
+
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="../assets/images/favicon.ico" type="image/png">
+
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+
+    <!--====== Pe Icon 7 Stroke css ======-->
+    <link rel="stylesheet" href="../assets/css/Pe-icon-7-stroke.css">
+
+    <!--====== Ion Icons css ======-->
+    <link rel="stylesheet" href="../assets/css/ionicons.min.css">
+
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+
+    <!--====== Slick css ======-->
+    <link rel="stylesheet" href="../assets/css/slick.css">
+
+    <!--====== Animate css ======-->
+    <link rel="stylesheet" href="../assets/css/animate.min.css">
+
+    <!--====== Nice Select css ======-->
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="../assets/css/default.css">
+
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="../assets/css/style.css">
+
+
 </head>
+
 <body>
-    <div>
-        <form method="post" action="/addProduct" enctype="multipart/form-data">
-            产品名字<input type="text" name="pName"/><br>
-            产品价格<input type="text" name="pPrice"/><br>
-            产品图片<input type="file" name="file"/><br>
-            产品描述<input type="text" name="pDescription"/><br>
-            <input type="submit">
-        </form>
+
+<!--====== PRELOADER  PART START ======-->
+
+<div id="preloader">
+    <div id="loader">
+        <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
     </div>
+</div>
+
+<!--====== PRELOADER  PART ENDS ======-->
+
+<!--====== HEADER  PART START ======-->
+
+<header class="header-area">
+    <div class="navigation navigation-2 navigation-page fixed-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <nav class="navbar navbar-expand-lg">
+                        <ul>
+                            <li><span class="r"><a href="#">个人信息</a></span></li>
+                            <li><span class="r"><a href="#">注销</a></span></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--====== HEADER  PART ENDS ======-->
+
+<!--====== PAGE TITLE  PART START ======-->
+
+<section class="page-title-area d-flex align-items-center bg_cover" style="background-image: url(assets/images/page-title-bg.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-title-item text-center">
+                    <h3 class="title">商品详情</h3>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item active" aria-current="page">商品详情</li>
+                        </ol>
+                    </nav>
+                </div> <!-- page title item -->
+            </div>
+        </div> <!-- row -->
+    </div> <!-- row -->
+    <div class="page-title-shape">
+        <img src="../assets/images/banner-shape.png" alt="shape">
+    </div> <!-- page title shape -->
+</section>
+
+<!--====== PAGE TITLE  PART ENDS ======-->
+
+<!--====== PRODUCT DETAILS PART START ======-->
+
+<section class="product-details-area pt-30 pb-90">
+    <div class="container">
+        <div class="row">
+            <form action="/addProduct" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>商品名字</label>
+                    <input type="text" class="form-control" name="pName" placeholder="商品名字" required>
+                </div>
+                <div class="form-group">
+                    <label for=>商品价格</label>
+                    <input type="text" class="form-control" name="pPrice" placeholder="商品价格" required>
+                </div>
+                <div class="form-group">
+                    <label for=>商品描述</label>
+                    <input type="text" class="form-control" name="pDescription" placeholder="商品描述" required>
+                </div>
+                <div class="form-group">
+                    <label>商品图片</label>
+                    <input type="file" id="exampleInputFile" name="file" required accept=".png,.jpg">
+                    <p class="help-block">只接受jpg，png类型文件</p>
+                </div>
+                <span style="width: 350px"></span><button type="submit" class="btn btn-default">上传</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!--====== PRODUCT DETAILS PART ENDS ======-->
+<!--====== jquery js ======-->
+<script src="../assets/js/vendor/modernizr-3.6.0.min.js"></script>
+<script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
+
+<!--====== Bootstrap js ======-->
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/popper.min.js"></script>
+
+<!--====== Slick js ======-->
+<script src="../assets/js/slick.min.js"></script>
+
+<!--====== Isotope js ======-->
+<script src="../assets/js/isotope.pkgd.min.js"></script>
+
+<!--====== Images Loaded js ======-->
+<script src="../assets/js/imagesloaded.pkgd.min.js"></script>
+
+<!--====== Magnific Popup js ======-->
+<script src="../assets/js/jquery.magnific-popup.min.js"></script>
+
+<!--====== Nice Select js ======-->
+<script src="../assets/js/jquery.nice-select.min.js"></script>
+
+<!--====== Ajax Contact js ======-->
+<script src="../assets/js/ajax-contact.js"></script>
+
+<!--====== Main js ======-->
+<script src="../assets/js/main.js"></script>
+
 </body>
+
 </html>
