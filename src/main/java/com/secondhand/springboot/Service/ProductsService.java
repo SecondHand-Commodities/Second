@@ -1,5 +1,6 @@
 package com.secondhand.springboot.Service;
 
+import com.secondhand.springboot.Utils.DiffName;
 import com.secondhand.springboot.Utils.UuidUtil;
 import com.secondhand.springboot.bean.Products;
 import com.secondhand.springboot.mapper.PersonMapper;
@@ -51,11 +52,12 @@ public class ProductsService {
         }
         String fileName = file.getOriginalFilename();
         String filePath = "D:/software/src/main/resources/static/images/";
-        File dest = new File(filePath + fileName);
+        String newFileName = DiffName.namePreffix(fileName);
+        File dest = new File(filePath + newFileName);
         try {
             file.transferTo(dest);
             LOGGER.info("文件上传成功");
-            return dest.getPath();
+            return "../images/" + newFileName;
         }catch (IOException e){
             LOGGER.error(e.toString(),e);
         }
