@@ -31,42 +31,42 @@
 						<img src="../static/images/user_face.jpg"/>
 					</div>
 					<div class="user-account">
-						<p class="tip">管理员</p>
-						<p class="account">
+						<p class="tip">用户,你好！</p>
+ 						<p class="account">
 							姓名：<span th:text="${admin.name}"></span>
 							性别：<span th:if="${admin.sex}==true">男</span>
 								 <span th:unless="${admin.sex}==true">女</span>
-						</p>
+						</p> 
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="main w1200">
+ 		<div class="main w1200"> 
 			<div class="left">
 				<ul>
 					<li>
-						<a href="shenghe?state=0" class="active">
+						<a href="myProduct?state=0">
 							<i class="icon iconfont icon-lingdang"></i>
-							待审核
+							我购买的商品
 						</a>
 					</li>
 					<li>
-						<a href="shenghe?state=1">
+						<a href="myProduct?state=1">
 							<i class="icon iconfont icon-lingdang"></i>
-							已审核
+							我出售的商品
 						</a>
 					</li>
 					<li>
-						<a href="shenghe?state=2">
+						<a href="test">
 							<i class="icon iconfont icon-lingdang"></i>
-							审核未通过
+							上传我的商品
 						</a>
 					</li>
 					
 					<li id="infor">
 						<a href="#" >
 							<i class="icon iconfont icon-lingdang"></i>
-							个人资料
+							我的个人资料
 						</a>
 					</li>
 				</ul>               
@@ -82,48 +82,32 @@
 							<div class="col-md-12">
 								<table class="table table-hover" id="user_table">
 									<thead>
-										<tr>											
-											<th>序号</th>
-											<th>图片</th>
+										<tr>																					
 											<th>商品名</th>
 											<th>价格</th>
 											<th>简单描述</th>
-											<th>状态</th>
+											<th>时间</th>
 											<th>操作</th>
 										</tr>
 									</thead>
 									
 									<tbody>
-										 <tr th:each="product,iterStat : ${productsList}">  
-										  	<th >#</th>  
-							                <th th:text="${product.pPhoto}"></th>  
+										 <tr th:each="product,iterStat : ${productsList}">  										  
 							                <th th:text="${product.pName}"></th>  
 							                <th th:text="${product.pPrice}"></th> 
 											<th th:text="${product.pDescription}"></th>  
-							                <th th:switch = "${product.pState}">
-												    <span th:case = "0">待审核</span>
-												    <span th:case = "1">已审核</span>
-												    <span th:case = "2">审核未通过</span>						                	
-							                </th>
-							                <th th:if="${product.pState}=='0'">
-							                	<button class="btn btn-primary btn-sm shenHe" th:value="${product.pid}">审核通过</button>
-							                	<button class="btn btn-primary btn-sm shenHeWei" th:value="${product.pid}">审核未通过</button>
-							                	
-							                </th>  
-							                <th th:unless="${product.pState}=='0'">
-							                	不可操作
-							                </th>       
+							                <th th:text = "${product.createtime}"></th>
+							                <th >
+							                	<button class="btn btn-info btn-sm infor" th:value="${product.pid}">查看详情</button>							                								                	
+							                </th>        
 							             </tr>
 									</tbody>
 								</table>
 							</div>	
 						</div>
 
-						
-						
 
-
-						<!-- 模态框 -->
+						模态框
 						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 						  <div class="modal-dialog" role="document">
 						    <div class="modal-content">
@@ -184,7 +168,7 @@
 						  </div>
 						</div>
 						
-					<!-- 模态框 -->
+					模态框
 						<div class="modal fade" id="myInformation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 						  <div class="modal-dialog" role="document">
 						    <div class="modal-content">
@@ -246,13 +230,8 @@
 						</div>
 						
 						<script type="text/javascript">
-					    	$(".shenHe").click(function(){
-					    		$.post("changeState?pid="+this.value+"&state="+"1");
-					    		location.reload();
-					    	})
-					    	$(".shenHeWei").click(function(){
-					    		$.post("changeState?pid="+this.value+"&state="+"2");
-					    		location.reload();
+					    	$(".infor").click(function(){
+					    		$.post("getProduct?pid="+this.value);
 					    	})
 					    	
 						    $("#per_save_btn").click(function(){
