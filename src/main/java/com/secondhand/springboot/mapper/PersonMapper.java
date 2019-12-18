@@ -17,6 +17,7 @@ public interface PersonMapper {
 
     @Select("select * from person where id = #{id}")
     public Person getPersonById(String id);
+    
     @Insert("insert into person values (#{id},#{name},#{sex},#{tel},#{address},#{flag})")
     public int insertPerson(Person person);
     

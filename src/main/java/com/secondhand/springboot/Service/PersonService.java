@@ -1,5 +1,6 @@
 package com.secondhand.springboot.Service;
 
+import com.secondhand.springboot.Utils.UuidUtil;
 import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.User;
 import com.secondhand.springboot.mapper.PersonMapper;
@@ -48,5 +49,13 @@ public class PersonService {
 
 	public boolean updatePerson(Person person) {
 		return personMapper.updatePerson(person)>0?true:false;
+	}
+
+	public boolean insertPerson(Person per) {
+		UuidUtil util=new UuidUtil();
+		per.setId(util.personUuid());
+		per.setFlag(0);
+		per.setSex(true);
+		return personMapper.insertPerson(per)>0?true:false;		
 	}
 }

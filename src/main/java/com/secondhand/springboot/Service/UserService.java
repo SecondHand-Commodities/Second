@@ -3,6 +3,8 @@ import com.secondhand.springboot.mapper.PersonMapper;
 import com.secondhand.springboot.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.secondhand.springboot.Utils.UuidUtil;
 import com.secondhand.springboot.bean.Person;
 import com.secondhand.springboot.bean.User;
 
@@ -41,6 +43,14 @@ public class UserService {
 	
 	public User selectByNameAndPassword(User account){		 
 		return userMapper.findUserByUsernameAndPassword(account.getUserName(), account.getPassword());
+	}
+
+	public boolean insertUser(Person per, User user) {
+		UuidUtil util=new UuidUtil();
+		user.setId(util.userUuid());
+		user.setPerson(per);
+		return userMapper.insertUser(user,per)>0?true:false;	
+		
 	}
 }
 

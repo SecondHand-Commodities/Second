@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,20 +29,14 @@ public class AdminController {
 	
 	
 	@RequestMapping("/admin")
-//	public String adminCheck(User admin,Model model) {
-//		
-//		Person person =adminService.information(admin);		
-//		model.addAttribute(person);
-//		return "index";
-//	}
-	public String adminCheck(Model model) {
-		init(model);
+	public String adminCheck(Model model,HttpServletRequest request) {
+		init(model,request);
 		return "index";
 	}
 	
 	@RequestMapping("/shenghe")
-	public String checkProduct(@RequestParam(value="state",defaultValue="0")String state,Model model) {		
-		init(model);
+	public String checkProduct(@RequestParam(value="state",defaultValue="0")String state,Model model,HttpServletRequest request) {		
+		init(model,request);
 		List<Products> productsList =new ArrayList<Products>();
 		productsList=productsService.getProductsByState(Integer.parseInt(state));
 		model.addAttribute(productsList);
@@ -49,20 +45,23 @@ public class AdminController {
 	
 	
 	@RequestMapping("/changeState")
-	public String changeProductState(@RequestParam(value="pid")String pid,@RequestParam(value="state")String state,Model model) {		
-		init(model);
+	public String changeProductState(@RequestParam(value="pid")String pid,@RequestParam(value="state")String state,Model model,HttpServletRequest request) {		
+		init(model,request);
 		productsService.checkProduct(pid, Integer.parseInt(state));
 		return "index";		
 	}
 	
-	
-	
-	public void init(Model model ) {
-		User user =new User();
-		user.setUserName("admin");
-		user.setPassword("admin");
+	public void init(Model model,HttpServletRequest request) {
+		User user =(User) request.getSession().getAttribute("user");
 		Person person =adminService.information(user);		
 		model.addAttribute("admin", person);
+	}
+	
+	@RequestMapping("/Tuichu")
+	public String Tuichu(HttpServletRequest request) {		
+		User user = null;
+		request.getSession().setAttribute("user",user);
+		return "login";		
 	}
 	
 	

@@ -59,4 +59,9 @@ public class UserController {
 	public String redirctLogin() {
 		return "login";
 	}
+	
+	@RequestMapping("signup")
+	public String redirctSingUp() {
+		return "signup";
+	}
 }

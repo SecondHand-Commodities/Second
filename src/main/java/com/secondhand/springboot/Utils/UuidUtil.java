@@ -59,5 +59,17 @@ public class UuidUtil {
         String id = "com" + format.format(now) + suffix;
         return id;
     }
+    
+    /**
+     * 生成person的主键
+     * @return
+     */
+    public static String personUuid(){
+        Date now = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+        String suffix = RandomStringUtils.randomAlphabetic(4);
+        String id = "pers" + format.format(now) + suffix;
+        return id;
+    }
 
 }

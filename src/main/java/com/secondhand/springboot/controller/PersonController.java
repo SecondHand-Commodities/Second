@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
+import javax.xml.transform.Source;
 
 /**
  * @author rzw
@@ -24,6 +27,8 @@ public class PersonController {
     PersonService personService;
     @Autowired
     PersonMapper personMapper;
+    @Autowired
+    UserService userService;
 
     @GetMapping("/per/{id}")
     public Person getPerson(@PathVariable("id") String id){
@@ -53,7 +58,21 @@ public class PersonController {
     	Person person=((User) request.getSession().getAttribute("user")).getPerson();
     	person.setAddress(per.getAddress());
     	person.setTel(per.getTel());
+    	person.setSex(per.isSex());
     	boolean result =personService.updatePerson(person);
         return "处理成功";
     }
+    
+    @RequestMapping(value="/register",method=RequestMethod.POST)
+    @ResponseBody
+    public String singUp(User user,Person per,@RequestParam(value="check_password")String check_password){
+    	if (!check_password.equals(user.getPassword()))
+    		return "俩次密码不正确";
+    	boolean resultP =personService.insertPerson(per);
+    	boolean resultU =userService.insertUser(per,user);
+    	if (resultP&&resultU)
+    		return "处理成功";
+    	else return "网络原因注册失败";
+    }
+    
 }
