@@ -23,4 +23,7 @@ public interface UserMapper {
     
     @Insert("insert into [user] values(#{[user].id},#{[user].userName},#{[user].password},#{per.id})")
     public int insertUser(User user,Person per);
+
+    @Select("select perid from [user] where id = #{userId}")
+    public String getPerIdByUserId(String userId);
 }

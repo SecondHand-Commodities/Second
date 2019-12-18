@@ -58,4 +58,8 @@ public class PersonService {
 		per.setSex(true);
 		return personMapper.insertPerson(per)>0?true:false;		
 	}
+
+	public String getPersonIdByUserId(String userId){
+        return userMapper.getPerIdByUserId(userId);
+    }
 }

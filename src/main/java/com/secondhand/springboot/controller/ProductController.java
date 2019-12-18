@@ -3,6 +3,7 @@ package com.secondhand.springboot.controller;
 import com.secondhand.springboot.Service.PersonService;
 import com.secondhand.springboot.Service.ProductsService;
 import com.secondhand.springboot.bean.Products;
+import com.secondhand.springboot.bean.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,8 +41,9 @@ public class ProductController {
     public String addProduct(@RequestParam("file") MultipartFile file, Products products, HttpSession session){
         String filePath = productsService.upLoadPhoto(file);
         if (StringUtils.equals(filePath,"上传失败"));
-//        String perid = (String) session.getAttribute("user");
-        String perid = "user123456789098";
+        User user = (User) session.getAttribute("user");
+        String perid = user.getPerson().getId();
+//        String perid = "user123456789098";
         productsService.upLoadProduct(products,perid,filePath);
         return "success";
     }
