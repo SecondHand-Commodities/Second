@@ -30,7 +30,11 @@ public class AdminController {
 	
 	@RequestMapping("/admin")
 	public String adminCheck(Model model,HttpServletRequest request) {
-		init(model,request);
+    	init(model, request);   
+    	List<Products> productsList =new ArrayList<Products>();
+    	User user =(User) request.getSession().getAttribute("user");
+    	productsList=productsService.getProductsByState(0);
+    	model.addAttribute(productsList);
 		return "index";
 	}
 	
