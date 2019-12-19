@@ -102,7 +102,11 @@ public class PersonController {
     
     @RequestMapping("personInformation")
     public String personInformation(Model model,HttpServletRequest request) {
-    	init(model, request);   	
+    	init(model, request);   
+    	List<Products> productsList =new ArrayList<Products>();
+    	User user =(User) request.getSession().getAttribute("user");
+    	productsList=orderService.selectMyPurchaseProduct(user.getPerson().getId());
+    	model.addAttribute(productsList);
     	return "person_information";
     }
     

@@ -72,4 +72,11 @@ public class ProductController {
         model.addAttribute("products",products);
         return "product-list";
     }
+    
+    @RequestMapping("getProduct_one")
+    public String getProductOne(Model model,@RequestParam("pid") String pid){
+        Products product = productsService.getProduct(pid);
+        model.addAttribute("product",product);
+        return "product_details_one";
+    }
 }
