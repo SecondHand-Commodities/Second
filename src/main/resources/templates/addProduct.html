@@ -122,7 +122,7 @@
                 </div>
                 <div class="form-group">
                     <label>商品图片</label>
-                    <input type="file" id="exampleInputFile" name="file" required accept=".png,.jpg">
+                    <input type="file" id="exampleInputFile" name="file" required accept=".png,.jpg" onchange="fileChange(this)">
                     <p class="help-block">只接受jpg，png类型文件</p>
                 </div>
                 <span style="width: 350px"></span><button type="submit" class="btn btn-default">上传</button>
@@ -133,6 +133,38 @@
 
 <!--====== PRODUCT DETAILS PART ENDS ======-->
 <!--====== jquery js ======-->
+<script type="text/javascript">
+    function fileChange(target) {
+        var fileSize = 0;
+        var fileType = [".jpg",".png"];
+        var fileMaxSize = 100;
+        var filePath = target.value;
+        var isNext = false;
+        var fileEnd = filePath.substring(filePath.lastIndexOf("."));
+        for(var i = 0;i < fileType.length;i++){
+            if (fileType[i] == fileEnd){
+                isNext = true;
+                break;
+            }
+        }
+
+        if (!isNext){
+            alert("不接受此文件类型！");
+            target.value = "";
+            return false;
+        }
+        var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+        var file = fileSystem.GetFile (filePath);
+        fileSize = file.Size;
+
+        var size = fileSize / 1024;
+        if (size > fileMaxSize){
+            alert("图片大小不能大于100kb");
+            target.value = "";
+            return false;
+        }
+    }
+</script>
 <script src="../assets/js/vendor/modernizr-3.6.0.min.js"></script>
 <script src="../assets/js/vendor/jquery-1.12.4.min.js"></script>
 
