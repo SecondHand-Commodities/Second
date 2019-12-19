@@ -96,10 +96,8 @@ public class PersonController {
     		productsList=orderService.selectMyPurchaseProduct(user.getPerson().getId());
     	else if(state.equals("1"))
     		productsList=orderService.selectMySaleProductAndSaled(user.getPerson().getId());
-    	else 
-    		productsList=orderService.selectMySaleProductAndUnSaled(user.getPerson().getId());    	
     	model.addAttribute(productsList);
-    	return "pLnf";
+    	return "person_information";
     }    
     
     @RequestMapping("personInformation")
@@ -110,7 +108,6 @@ public class PersonController {
     
 	public void init(Model model,HttpServletRequest request) {
 		User user =(User) request.getSession().getAttribute("user");
-		System.out.println(user.getPerson().getName());
 		model.addAttribute("admin", user.getPerson());
 	}
 	

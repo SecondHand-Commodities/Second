@@ -22,9 +22,6 @@ public interface OrderMapper {
     @Select("select * from [order],[Products] where [order].id=#{id} and [order].Pid=[Products].Pid")
 	public List<Products> selectMyPurchaseProduct(String id);
     
-    @Select("select * from [Products] where [Products].id=#{id} and Pstate='3'")
+    @Select("select * from [Products] where [Products].perid=#{id}")
 	public List<Products> selectMySaleProductAndSaled(String id);
-    
-    @Select("select * from [Products] where [Products].id=#{id} and Pstate<'3'")
-	public List<Products> selectMySaleProductAndUnSaled(String id);
 }

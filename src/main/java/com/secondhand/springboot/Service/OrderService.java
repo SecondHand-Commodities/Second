@@ -60,8 +60,4 @@ public class OrderService {
     public List<Products> selectMySaleProductAndSaled(String id) {
     	return orderMapper.selectMySaleProductAndSaled(id);  	
     }
-    
-    public List<Products> selectMySaleProductAndUnSaled(String id) {
-    	return orderMapper.selectMySaleProductAndUnSaled(id);  	
-    }
 }
