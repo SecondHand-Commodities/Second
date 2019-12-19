@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Field;
 import java.util.Objects;
+import java.util.UUID;
 
 /**
  * @author ：杨肖宁
@@ -54,6 +55,7 @@ public class PersonService {
 	public boolean insertPerson(Person per) {
 		UuidUtil util=new UuidUtil();
 		per.setId(util.personUuid());
+        per.setName(("user_"+ UUID.randomUUID().toString()).substring(0,10));
 		per.setFlag(0);
 		per.setSex(true);
 		return personMapper.insertPerson(per)>0?true:false;		
