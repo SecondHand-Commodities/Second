@@ -22,7 +22,7 @@ public interface UserMapper {
     public User findUserByUsernameAndPassword(@Param("username") String username,@Param("password") String password);
     
     @Insert("insert into [user] values(#{[user].id},#{[user].userName},#{[user].password},#{per.id})")
-    public int insertUser(User user,Person per);
+    public int insertUser(@Param("user") User user,@Param("per") Person per);
 
     @Select("select perid from [user] where id = #{userId}")
     public String getPerIdByUserId(String userId);
